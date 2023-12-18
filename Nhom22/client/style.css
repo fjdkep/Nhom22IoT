@@ -1,0 +1,391 @@
+html,
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  width: 100vw;
+  display: flex;
+  height: 100vh;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+
+/* Sidebar Menu */
+.sidebar {
+  height: 100vh;
+  width: 12vw;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+
+.sidebar header {
+  font-size: 35px;
+  color: black;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 40px;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+
+.sidebar ul {
+  padding: 10px;
+}
+
+.sidebar ul li {
+  list-style: none;
+  line-height: 65px;
+  font-size: 20px;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  user-select: none;
+  border-radius: 10px;
+  transition: 0.4s;
+  border: 2px solid;
+  text-align: center;
+}
+
+.sidebar ul li:hover {
+  /* padding-left: 30px; */
+  background-color: greenyellow;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Màn Hình Hiển Thị Giá Trị Cảm Biến */
+.monitor_sensor {
+  height: 130px;
+  width: 1442px;
+  display: flex;
+  gap: 30px;
+}
+
+.humidity,
+.temperature,
+.brightness {
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  font-size: 20px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid rgb(160, 160, 160);
+}
+
+.humidity {
+  background-color: #e3f2fd;
+}
+
+.temperature {
+  background-color: #ffe6e6;
+}
+
+.brightness {
+  background-color: #fffde7;
+}
+
+.humidity div,
+.temperature div,
+.brightness div {
+  padding: 7px;
+}
+
+/* Đồ thị */
+.chart_sensor {
+  padding: 20px;
+  height: 630px;
+  width: 910px;
+  background-color: #ffffff;
+  margin-top: 30px;
+  margin-right: 35px;
+  border: 2px solid #060606;
+  border-radius: 10px;
+}
+
+/* Các nút bấm */
+.action_button {
+  margin-top: 28px;
+  width: 320px;
+}
+
+
+.action_led {
+  border-radius: 10px;
+  background-color: rgb(252, 252, 252);
+  height: 25vh;
+  border: 2px solid #060606fb;
+  display: flex;
+  align-items: center;
+
+}
+
+.led_main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid;
+  position: relative;
+  left: 70px;
+  bottom: 20px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  height: 275px;
+}
+
+.led_main img,
+.led_main div,
+.led_main button 
+{
+margin: 10px;
+}
+
+.toggle-btn {
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ccc;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.2);
+}
+
+.toggle-btn.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.row_items .items {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: #ffffff;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.row_items .items div {
+  margin-top: 10px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.row_items {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lienhe .items:hover {
+  background-color: #62ee69;
+}
+
+.sensor_tab,
+.action_tab {
+  border-radius: 20px;
+  border: 1px solid #000000;
+  padding: 10px;
+  width: 1400px;
+  height: 868px;
+  margin-left: 40px;
+  margin-top: 10px;
+  background: rgb(234, 240, 241);
+}
+
+#sensor_table,
+#action_table {
+  text-align: center;
+  border-spacing: 0px;
+  height: 767px;
+}
+
+#sensor_table td,
+#action_table td {
+  height: 21px;
+  border: 1px solid #8a8a8a;
+}
+
+#sensor_table tr:nth-child(even),
+#action_table tr:nth-child(even) {
+  background-color: #a8dae956;
+}
+
+.table_container {
+  overflow-y: scroll;
+  max-height: 767px;
+  padding: 0;
+}
+
+.item {
+  position: sticky;
+  top: 0px;
+  border: 1px solid #000000;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #747474;
+  color: rgb(255, 255, 255);
+}
+
+.dashboard {
+  margin-top: 53px;
+  margin-left: 30px;
+}
+
+.dashboard,
+.introduce_tab,
+.sensor_tab,
+.action_tab {
+  display: none;
+}
+
+.menu_table {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.time_section {
+  display: flex;
+  margin: auto;
+  width: 470px;
+  justify-content: space-between;
+}
+
+.sort_section {
+  display: flex;
+  width: 260px;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.search_section {
+  display: flex;
+  margin: auto;
+  width: 400px;
+  justify-content: space-between;
+}
+
+.show_section {
+  display: flex;
+  margin: auto;
+  width: 90px;
+  justify-content: space-between;
+}
+
+.page_change {
+  margin-top: 8px;
+  display: flex;
+  font-weight: bold;
+  gap: 10px;
+  justify-content: center;
+}
+
+.page_change select {
+  font-size: 15px;
+  appearance: none;
+  font-weight: bold;
+  width: 85px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#bat1,
+#bat2 {
+  margin-right: 10px;
+}
+
+#tat1,
+#tat2 {
+  margin-left: 10px;
+}
+
+.led-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; 
+}
+
+.dem{
+  display: flex;
+}
+
+.profile{
+  background-image: url('https://t4.ftcdn.net/jpg/03/16/36/59/360_F_316365913_WKVKZW7gzsqqhkx4PgGyu0rArj5GykHK.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 1640px;
+  height: 915px;
+}
+.rectangle{
+  border: 1px solid;
+  height: 100px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+#id1{
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  transition: transform 0.2s;
+}
+#id2{
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  transition: transform 0.2s;
+}
+#id3{
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  transition: transform 0.2s;
+}
+#id1:hover, #id2:hover, #id3:hover{
+  transform: scale(1.5);
+}
+.box{
+  background-color: rgba(0, 0, 0, 0.5);
+  width: fit-content;
+  height: 500px; 
+  border-radius: 15px;
+  margin-top: 10px;
+  padding-right: 40px;
+}
+.box ul{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
+.gif{
+  width: 900px;
+  height: 490px;
+  position: absolute;
+  right: 20px;
+  bottom: 70px;
+  border-radius: 15px;
+}
+

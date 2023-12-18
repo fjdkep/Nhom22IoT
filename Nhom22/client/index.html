@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IOT</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <!-- Tab Menu -->
+    <div class="sidebar">
+      <header>IOT</header>
+      <ul>
+        <li class="button" onclick="showPanel(0)">Dashboard</li>
+        <li class="button" onclick="showPanel(1)">Profile</li>
+        <li class="button" onclick="showPanel(2)">Sensor Log</li>
+        <li class="button" onclick="showPanel(3)">Action Log</li>
+      </ul>
+    </div>
+    <div class="tabScreen">
+      <!-- Tab Dashboard -->
+      <div class="dashboard" style="margin-left: 90px;">
+        <div class="monitor_sensor">
+          <div class="temperature" id="temperature">
+            <div>Nhiệt Độ (°C)</div>
+            <div id="temp" style="font-size: 20px; font-weight: bold"></div>
+          </div>
+          <div class="humidity" id="humidity">
+            <div>Độ Ẩm (%)</div>
+            <div id="humi" style="font-size: 20px; font-weight: bold"></div>
+          </div>
+          <div class="brightness" id="brightness">
+            <div>Ánh Sáng (Lux)</div>
+            <div id="bright" style="font-size: 20px; font-weight: bold"></div>
+          </div>
+        </div>
+        <div style="display: flex">
+          <div class="chart_sensor">
+            <canvas id="mychart" style="position: absolute; bottom: 150px;"></canvas>
+          </div>
+          <div class="action_button">
+            <div style="
+                border: 2px solid black;
+                padding: 10px;
+                margin: 30px;
+                text-align: center;
+                font-size: 25px;
+                font-weight: bold;
+                background-color: rgb(210, 218, 110);
+                border-radius: 10px;
+                position: relative;
+                top: -25px;
+                left: 65px;
+              ">
+              Điều khiển thiết bị
+            </div>
+            <!-- <div class="action_led"> -->
+              <div class="led_main">
+                <div style="font-size: 25px; font-weight: bold">Đèn 1</div>
+                <div class="led-container">
+                  <div id="bat1">Bật: 0</div>
+                  <img id="led1IMG" src="images/led_off.png" style="height: 80px" />
+                  <div id="tat1">Tắt: 0</div>
+                </div>
+                <div class="toggle-btn-wrapper">
+                  <button class="toggle-btn" id="led1" onclick="buttonONOFF('led1')">
+                    OFF
+                  </button>
+                </div>
+              </div>       
+              <span style="width: 2px; height: 100%; background-color: black"></span>
+              <br>
+              <div class="led_main">
+                <div style="font-size: 25px; font-weight: bold">Đèn 2</div>
+                <div class="led-container">
+                  <div id="bat2">Bật: 0</div>
+                  <img id="led2IMG" src="images/led_off.png" style="height: 80px" />
+                  <div id="tat2">Tắt: 0</div>
+                </div>
+                <div class="toggle-btn-wrapper">
+                  <button class="toggle-btn" id="led2" onclick="buttonONOFF('led2')">
+                    OFF
+                  </button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tab Giới Thiệu -->
+    <div class="introduce_tab">
+      <div class="profile">
+        <div class="rectangle" title="Mạng xã hội">    
+          <a href="https://github.com/ThaiSon155" target="_blank">
+              <img id = "id1" title="Github" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg" alt="Ảnh Github">
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100027316413441" target="_blank">
+              <img id = "id2" title="Facebook" src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Ảnh Facebook">
+          </a>
+          <a href="https://www.youtube.com/channel/UCnFapai1vm26B6NhBqtu_vQ" target="_blank">
+              <img id = "id3" title="Youtube" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png?20220706172052" alt="Ảnh Youtube">
+          </a>
+        </div>
+        <div class="box" title="Thông tin cá nhân">
+          <h1 style="text-align: center; color: white; font-size: 40px;">Profile</h1>
+          <ul>
+              <l>Họ và tên: Nguyễn Thái Sơn</l>
+              <p></p>
+              <l>Mã sinh viên: B20DCAT155</l>
+              <p></p>
+              <l>Lớp: D20CQAT03-B</l>
+              <p></p>
+              <l>Quê quán: Hà Nội</l>
+              <p></p>
+              <l>Sở thích: Đá bóng, chơi game, du lịch</l>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Hiển Thị Lịch Sử Cảm Biến -->
+    <div class="sensor_tab" style="margin-left: 100px;">
+      <div style="font-size: 28px; text-align: center; margin-bottom: 10px;"> Sensor History</div>
+      <div class="menu_table">
+        <div class="time_section">
+          <div>Thời gian:</div>
+          <input type="text" id="inputSDTSensor" style="text-align: center; margin: auto;">
+          <input type="text" id="inputEDTSensor" style="text-align: center;  margin: auto;">
+          <button id="btnDTSensor">Tìm</button>
+        </div>
+        <div class="sort_section">
+          <div>Sắp xếp:</div>
+          <select id="selectSensor" style="width: 85px;">
+            <option value="id">id</option>
+            <option value="device_id">device</option>
+            <option value="humidity">humidity</option>
+            <option value="temperature">temperature</option>
+            <option value="light">light</option>
+            <option value="time">time</option>
+          </select>
+          <button id="btnSUSensor">Tăng</button>
+          <button id="btnSDSensor">Giảm</button>
+        </div>
+        <div class="search_section">
+          <div>Tìm kiếm:</div>
+          <select id="selectSearch" style="width: 85px;">
+            <option value="id">id</option>
+            <option value="device_id">device</option>
+            <option value="humidity">humidity</option>
+            <option value="temperature">temperature</option>
+            <option value="light">light</option>
+            <option value="time">time</option>
+          </select>
+          <input id="inputSSensor" type="text">
+          <button id="btnSSensor">Tìm</button>
+        </div>
+      </div>
+
+      <div class="table_container">
+        <table id="sensor_table" style="width:100%">
+          <thead>
+            <tr>
+              <th class="item" style="width: 6%;">Id</th>
+              <th class="item" style="width: 17%;">Device</th>
+              <th class="item" style="width: 17%;">Humidity</th>
+              <th class="item" style="width: 17%;">Temperature</th>
+              <th class="item" style="width: 17%;">Light</th>
+              <th class="item">Time</th>
+            </tr>
+          </thead>
+          <tbody> </tbody>
+        </table>
+      </div>
+
+      <div class="page_change">
+        <button id="btnBSensor"> Back</button>
+        <select id="pageSensor"> </select>
+        <button id="btnNSensor"> Next</button>
+      </div>
+    </div>
+    <!-- Tab Hiển Thị Lịch Sử Button -->
+    <div class="action_tab" style="margin-left: 100px;">
+      <div style="font-size: 28px; text-align: center; margin-bottom: 10px;"> Action History</div>
+      <div class="menu_table">
+        <div class="time_section">
+          <div>Thời gian:</div>
+          <input type="text" id="inputSDTAction" style="text-align: center; margin: auto;">
+          <input type="text" id="inputEDTAction" style="text-align: center;  margin: auto;">
+          <button id="btnDTAction">Tìm</button>
+        </div>
+      </div>
+      <div class="table_container">
+        <table id="action_table" style="width:100%">
+          <thead>
+            <tr>
+              <th class="item" style="width: 6%;">Id</th>
+              <th class="item" style="width: 25%;">Device</th>
+              <th class="item" style="width: 25%;">Status</th>
+              <th class="item">Time</th>
+            </tr>
+          </thead>
+          <tbody> </tbody>
+        </table>
+      </div>
+      <div class="page_change">
+        <button id="btnBAction"> Back</button>
+        <select id="pageAction"></select>
+        <button id="btnNAction"> Next</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
